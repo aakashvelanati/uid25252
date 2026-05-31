@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Movies | Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #151515;
+            overflow-x: hidden;
+        }
+
+        /* Top Header */
+        header {
+            background-color: #202020;
+            color: white;
+            border-bottom: 1px solid #393939;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .login-section {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .marvel-logo {
+            background-color: #ed1d24;
+            height: 50px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .promo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+        }
+
+        /* Secondary Nav */
+        .main-nav {
+            background-color: #202020;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            gap: 25px;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Hero Section (Referencing image_469364.png) */
+        .hero {
+            background: linear-gradient(to right, #000 30%, transparent), url('avengersinfinitywar_lob_crd_02_1.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 10%;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 500px;
+            margin-top: 10px;
+        }
+
+        /* Disney+ Promo (Referencing image_469321.png) */
+        .disney-promo {
+            background: url('ant-manthewasp_lob_crd_01.jpg') no-repeat center;
+            background-size: cover;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            padding: 50px;
+            color: white;
+        }
+
+        .promo-content {
+            max-width: 400px;
+        }
+
+        .btn-red {
+            background-color: #e23636;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 20px;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+
+        /* Sections General */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-transform: uppercase;
+            font-size: 24px;
+            border-bottom: 2px solid #e6e6e6;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* News Grid (Context from image_469058.png) */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .news-card .category {
+            color: #e23636;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .news-card h3 {
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        /* Movie Grid (Referencing image_468ffd.png) */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+
+        .movie-card {
+            transition: transform 0.2s;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .movie-card img {
+            width: 100%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .movie-card h4 {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .movie-card p {
+            font-size: 12px;
+            color: #767676;
+        }
+
+        /* Marvel Unlimited (Referencing image_468f9c.png) */
+        .unlimited-banner {
+            background-color: #000;
+            display: flex;
+            color: white;
+            align-items: center;
+        }
+
+        .unlimited-img {
+            flex: 1;
+            height: 300px;
+            background: url('captainamericabravenewworld_lob_crd_05.jpg') no-repeat;
+            background-size: contain;
+        }
+
+        .unlimited-text {
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #151515;
+            color: #abb1b1;
+            padding: 60px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 60px;
+            color: white;
+            font-weight: 900;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+            font-size: 13px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .social-icons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="top-nav">
+            <div class="login-section">
+                <span>LOG IN</span> | <span>SIGN UP</span>
+            </div>
+            <div class="marvel-logo">MARVEL</div>
+            <div class="promo-section">
+                <i class="fa-solid fa-bolt" style="color: #e23636;"></i>
+                <span>MARVEL UNLIMITED <br> SUBSCRIBE</span>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="#">News</a>
+            <a href="#">Comics</a>
+            <a href="#">Characters</a>
+            <a href="#">Games</a>
+            <a href="#">Movies</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Videos</a>
+            <a href="#">More</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Movies</h1>
+        <p>Journey into the cosmic depths of the mighty Marvel Cinematic Universe!</p>
+    </section>
+
+    <!-- News Section -->
+    <div class="container">
+        <h2 class="section-title">Latest Movies News</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <img src="avengersdoomsday_lob_crd_02.jpg" alt="News">
+                <span class="category">Movies</span>
+                <h3>Reflections on 10 Years of Marvel Studios' 'Captain America: Civil War'</h3>
+            </div>
+            <div class="news-card">
+                <img src="spidermanbrandnewday_lob_crd_02.jpg" alt="News">
+                <span class="category" style="color: #666;">Culture & Lifestyle</span>
+                <h3 style="color: #e23636;">Marvel's Make-A-Wish Tradition Soars to New Heights</h3>
+            </div>
+            <div class="news-card">
+                <img src="thenewavengers_lob_crd_01.jpg" alt="News">
+                <span class="category">Movies</span>
+                <h3>Official 'Spider-Man: Brand New Day' Teaser Posters Unveiled</h3>
+            </div>
+            <div class="news-card">
+                <img src="captainamericabravenewworld_lob_crd_05 (1).jpg" alt="News">
+                <span class="category">Movies</span>
+                <h3>See the Complete MCU Timeline on Disney+</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disney+ Promo -->
+    <section class="disney-promo">
+        <div class="promo-content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" width="120">
+            <h2>A UNIVERSE OF SUPER HEROES</h2>
+            <p>All Your Favorite Stories and More. Start Streaming Now.</p>
+            <button class="btn-red">Stream Now</button>
+        </div>
+    </section>
+
+    <!-- Movies Grid -->
+    <div class="container">
+        <h2 class="section-title">Marvel Movies</h2>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <img src="deadpoolandwolverine_lob_crd_03.jpg" alt="Movie">
+                <h4>Avengers: Secret Wars</h4>
+                <p>DEC 17, 2027</p>
+            </div>
+            <div class="movie-card">
+                <img src="avengerssecretwars_lob_crd_02.jpg" alt="Movie">
+                <h4 style="color: #e23636;">Blade</h4>
+                <p>TBA</p>
+            </div>
+            <div class="movie-card">
+                <img src="blade_lob_crd_01.jpg" alt="Movie">
+                <h4>Avengers: Doomsday</h4>
+                <p>DEC 18, 2026</p>
+            </div>
+            <div class="movie-card">
+                <img src="themarvels_lob_crd_05.jpg" alt="Movie">
+                <h4>Spider-Man: Brand New Day</h4>
+                <p>JUL 31, 2026</p>
+            </div>
+            <div class="movie-card">
+                <img src="guardiansofthegalaxyvolume3_lob_crd_03.jpg" alt="Movie">
+                <h4>The Fantastic Four</h4>
+                <p>2025</p>
+            </div>
+            <div class="movie-card">
+                <img src="antmanandthewaspquantumania_lob_crd_03.jpg" alt="Movie">
+                <h4>Thunderbolts*</h4>
+                <p>2025</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unlimited Banner -->
+    <section class="unlimited-banner">
+        <div class="unlimited-img"></div>
+        <div class="unlimited-text">
+            <p style="color: #e23636; font-weight: bold; letter-spacing: 2px;">MARVEL UNLIMITED</p>
+            <h2 style="font-size: 32px;">Unlock the Universe</h2>
+            <p>Get instant access to 30,000+ digital comics on the web & mobile devices.</p>
+            <button class="btn-red">Join Now!</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">M</div>
+            <div class="footer-links">
+                <ul>
+                    <li>About Marvel</li>
+                    <li>Help/FAQs</li>
+                    <li>Careers</li>
+                    <li>Internships</li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li>Advertising</li>
+                    <li>Disney+</li>
+                    <li>MarvelHQ.com</li>
+                    <li>Redeem Digital Comics</li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <p style="color: white; font-weight: bold; font-size: 12px; margin-bottom: 5px;">FOLLOW MARVEL</p>
+                <div class="social-icons">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-tumblr"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-snapchat"></i>
+                    <i class="fa-brands fa-pinterest"></i>
+                    <i class="fa-brands fa-tiktok"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
